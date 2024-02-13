@@ -25,6 +25,12 @@ try
         .AddEntityFrameworkStores<ApplicationDbContext>();
     builder.Services.AddControllersWithViews();
 
+    builder.Services.Configure<IdentityOptions>(config =>
+    {
+        config.Password.RequireDigit = false;
+        config.Password.RequireUppercase = false;
+        config.Password.RequireNonAlphanumeric = false;
+    });
 
     var app = builder.Build();
 
